@@ -9,3 +9,4 @@ O repositório deve conter evidências (prints, textos, etc) de que o código fo
 
 
 Pablo Borba Leal (Tia: 42145333)
+Jonatas Garcia de Oliveira (Tia: 42181232)
