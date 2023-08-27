@@ -16,7 +16,6 @@ int ** alocaMatriz (int linha,int coluna){
 	return matriz;
 }
 
-
 void imprimeMatriz(int linha,int coluna,int **matriz){
 	int i,j;
 	for (i = 0;i < linha ;i++){
@@ -28,16 +27,20 @@ void imprimeMatriz(int linha,int coluna,int **matriz){
 }
 
 
-void matrizTransposta(int linha,int coluna, int **matriz){
+void matrizModulo(int linha,int coluna, int **matriz){
 	int i,j;
-	int transposta[coluna][linha];
-	for(i = 0;i < coluna;i++){
-		for(j = 0; j < linha;j++){
-			transposta [i][j] =  matriz[j][i];
-			printf("%d ",transposta[i][j]);
+	int modulo[linha][coluna];
+	for (i = 0; i< linha;i++){
+		for(j = 0;j < coluna;j++){
+			if(matriz[i][j] < 0 ){
+				modulo[i][j] = matriz[i][j] * -1;
+			}else{
+				modulo[i][j] = matriz[i][j];
+			}
+			printf("%d ",modulo[i][j]);		
 		}
 		printf("\n");
-	} 	
+	}
 }
 
 void liberaMatriz(int linha,int **matriz){
@@ -48,8 +51,9 @@ void liberaMatriz(int linha,int **matriz){
 	free(matriz);
 }
 
+
 int main(){
-	printf("Ex08 -> Crie uma função capaz de criar a transposta de uma matriz.\n");
+	printf("Ex09 -> Crie uma função capaz de substituir todos os números negativos de uma matriz por seu módulo.\n");
 	printf("Jônatas Garcia de Oliveira TIA:42181232\n");
 	printf("Pablo Borba Leal TIA:42145333\n\n");
 	int linha = 3;
@@ -57,10 +61,9 @@ int main(){
 	int **matriz = alocaMatriz(linha,coluna);
 	printf("Matriz Original \n");
 	imprimeMatriz(linha,coluna,matriz);
-	printf("\n");
-	printf("Matriz Transposta \n");
-	matrizTransposta(linha,coluna,matriz);
-	printf("\n");
+	printf("Matriz Modulo \n");
+	matrizModulo(linha,coluna,matriz);
 	liberaMatriz(linha,matriz);
 	return 0;
+	
 }
